@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="preload" href="Consolas.woff2" as="font" type="font/woff2" crossorigin>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+<head>
+    <style>
+        .orange {
+            color: orange;
+            margin-left: 10px;
+            font-family: monospace;
+            font-weight: 500;
+            font-size: 20px;
+        }
+
+        .hljs {
+            display: block;
+            overflow-x: auto;
+            background: #191f26;
+            color: #f7eecf;
+            padding: .5em;
+            font-weight: 300;
+            font-size: 16px;
+            font-family: 'Consolas';
+        }
+
+        .buttonhold {
+            background: #28313b;
+            background-size: cover;
+            color: #f7eecf;
+            padding: .5em;
+            font-weight: 300;
+            font-size: 16px;
+            font-family: monospace;
+        }
+
+        .buttons {
+            float: right;
+            z-index: 100;
+            top: 10px;
+            color: rgb(19, 8, 8);
+            cursor: pointer;
+        }
+
+        .downloadbutton {
+            position: relative;
+            margin-left: 0px;
+            z-index: 100;
+            right: 0px;
+            color: rgb(19, 8, 8);
+            cursor: pointer;
+        }
+
+        .title {
+            color: #c5c5c5;
+            margin-left: 10px;
+            font-family: monospace;
+            font-weight: 500;
+            font-size: 20px;
+        }
+
+        #copybutton {
+            color:white;
+        }
+        #copybutton:hover {
+            color: orange;
+        }
+        #downloadbutton {
+            color:#8097b3;
+        }
+        #downloadbutton:hover {
+            color: white;
+        }
+        button {
+            background: transparent;
+            border: 0px;
+        }
+
+        .wrapper {
+            height: 50px;
+            /*This part is important for centering*/
+            display: flex;
+            align-items: center;
+            justify-content: left;
+        }
+
+        .typing-demo {
+            color: white;
+            width: 12ch;
+            animation: typing 2s steps(12), blink .5s step-end infinite alternate;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid;
+            font-family: monospace;
+            font-size: 2em;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0
+            }
+        }
+            
+        @keyframes blink {
+            50% {
+                border-color: transparent
+            }
+        }
+    </style>
+</head>
+
+<body style="background-color: hsl(210, 25%, 8%);">
+    <script>
+        const copyToClipboard = str => {
+            const el = document.createElement('textarea');
+            el.value = str;
+            el.setAttribute('readonly', '');
+            el.style.position = 'absolute';
+            el.style.left = '-9999px';
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            alert("Copied " + str)
+        }
+        function TweenColor(params) {
+            
+        }
+    </script>
+
+    <div class="wrapper">
+        <div class="typing-demo">
+            Essential UI
+        </div>
+    </div>
+
+    <!-- DOWNLOAD -->
+    <div  class="buttonhold">
+        Library File
+        <a href="https://raw.githubusercontent.com/Blissful4992/Miscellaneous/main/EssentialUI/main.lua"><button class="downloadbutton">
+            <div id="downloadbutton"><i class="fa fa-arrow-circle-down fa-lg"></i></div>
+        </button></a>
+    </div>
+
+    <h1></h1>
+
+    <div  class="buttonhold">
+        _G["Theme"]
+        <a href="https://raw.githubusercontent.com/Blissful4992/Miscellaneous/main/EssentialUI/theme.lua"><button class="downloadbutton">
+            <div id="downloadbutton"><i class="fa fa-arrow-circle-down fa-lg"></i></div>
+        </button></a>
+    </div>
+
+    <!-- WINDOW -->
+    <h1></h1>
+    <h1 class="title">Window <span style="color: rgb(255, 255, 255); font-size: 12px;">Uses <span style="color: rgb(255, 163, 57)">_G[</span><span style="color: rgb(255, 223, 187)">"Theme"</span><span style="color: rgb(255, 163, 57)">]</span> for colors</span></h1>
+    <h1 class="hljs">
+        <span style="color: rgb(255, 83, 83)">local</span> Hub = Library:NewWindow()
+        <button class="buttons" onclick="copyToClipboard('local Hub = Library:NewWindow()')">
+            <div id="copybutton"><i class="fa fa-copy fa-lg"></i></div>
+        </button>
+    </h1>
+    <h1 class="hljs">
+        <<span style="color: #f73">void</span>> Hub:Toggle()
+        <button class="buttons" onclick="copyToClipboard('Hub:Toggle()')">
+            <div id="copybutton"><i class="fa fa-copy fa-lg"></i></div>
+        </button>
+    </h1>
+
+    <!-- PAGE -->
+    <h1></h1>
+    <h1 class="title">Page</h1>
+    <h1 class="hljs">
+        <span style="color: rgb(255, 163, 57)">_G[</span><span style="color: rgb(255, 223, 187)">"pages"</span><span style="color: rgb(255, 163, 57)">]</span> = {}
+        <br>
+        <button class="buttons" onclick="copyToClipboard('G[] = {}\nlocal TestPage = Hub:NewPage(_G[], pagename))')">
+            <div id="copybutton"><i class="fa fa-copy fa-lg"></i></div>
+        </button>
+        <br>
+        <span style="color: rgb(255, 83, 83)">local</span> TestPage = Hub:NewPage(<span style="color: rgb(255, 163, 57)">_G[</span><span style="color: rgb(255, 223, 187)">"pages"</span><span style="color: rgb(255, 163, 57)">]</span>, <<span style="color: #f73">string</span>> <span style="color: rgb(255, 223, 187)">"Test Page"</span>)
+    </h1>
+
+    <!-- SECTION -->
+    <h1></h1>
+    <h1 class="title">Section</h1>
+    <h1 class="hljs">
+        <span style="color: rgb(255, 83, 83)">local</span> TestSection = TestPage:NewSection(<<span style="color: #f73">string</span>> <span style="color: rgb(255, 223, 187)">"Test Section"</span>)
+        <button class="buttons" onclick="copyToClipboard('local TestSection = TestPage:NewSection(name)')">
+            <div id="copybutton"><i class="fa fa-copy fa-lg"></i></div>
+        </button>
+    </h1>
+
+    <!-- BUTTON -->
+    <h1></h1>
+    <h1 class="title">Button</h1>
+    <h1 class="hljs">
+        <span style="color: rgb(255, 83, 83)">local</span> TestButton = TestSection:NewButton(<<span style="color: #f73">string</span>> <span style="color: rgb(255, 223, 187)">"Test Button"</span>, <<span style="color: #f73">function</span>> function()
+        <br>
+        <button class="buttons" onclick="copyToClipboard('local TestButton = TestSection:NewButton(name, function()\n    -- do stuff\nend)')">
+            <div id="copybutton"><i class="fa fa-copy fa-lg"></i></div>
+        </button>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(<span style="color: rgb(255, 223, 187)">"Clicked!"</span>)
+        <br>end)
+    </h1>
+    <h1 class="hljs">
+        <<span style="color: #f73">void</span>> TestButton:Fire(<<span style="color: #f73">number</span>> times)
+        <button class="buttons" onclick="copyToClipboard('TestButton:Fire(times)')">
+            <div id="copybutton"><i class="fa fa-copy fa-lg"></i></div>
+        </button>
+    </h1>
+
+    <!-- TOGGLE -->
+    <h1></h1>
+    <h1 class="title">Toggle</h1>
+    <h1 class="hljs">
+        <span style="color: rgb(255, 83, 83)">local</span> TestToggle = TestSection:NewToggle(<<span style="color: #f73">string</span>> <span style="color: rgb(255, 223, 187)">"Test Toggle"</span>, <<span style="color: #f73">function</span>> function(<span style="color: rgb(255, 223, 187)">bool</span>)
+        <br>
+        <button class="buttons" onclick="copyToClipboard('local TestToggle = TestSection:NewToggle(togglename, function(bool)\n    print(bool)\nend, {default = true, keybind = Enum.KeyCode.Home})')">
+            <div id="copybutton"><i class="fa fa-copy fa-lg"></i></div>
+        </button>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(<span style="color: rgb(255, 223, 187)">bool</span>)
+        <br>end, {<<span style="color: #f73">bool</span>> default = true, <<span style="color: #f73">keycode</span>> keybind = Enum.KeyCode.Home})
+    </h1>
+    <h1 class="hljs">
+        <<span style="color: #f73">void</span>> TestToggle:Toggle()
+        <button class="buttons" onclick="copyToClipboard('TestToggle:Toggle()')">
+            <div id="copybutton"><i class="fa fa-copy fa-lg"></i></div>
+        </button>
+    </h1>
+    <h1 class="hljs">
+        <<span style="color: #f73">void</span>> TestToggle:UpdateKeybind(<<span style="color: #f73">keycode</span>> Enum.KeyCode.End)
+        <button class="buttons" onclick="copyToClipboard('TestToggle:UpdateKeybind(Enum.KeyCode.End)')">
+            <div id="copybutton"><i class="fa fa-copy fa-lg"></i></div>
+        </button>
+    </h1>
+
+    <!-- COLORPICKER -->
+    <h1></h1>
+    <h1 class="title">Color Picker</h1>
+    <h1 class="hljs">
+        <span style="color: rgb(255, 83, 83)">local</span> TestPicker = TestSection:NewColorPicker(<<span style="color: #f73">string</span>> <span style="color: rgb(255, 223, 187)">"Test Picker"</span>, <<span style="color: #f73">function</span>> function(<span style="color: rgb(255, 223, 187)">newcolor</span>)
+        <br>
+        <button class="buttons" onclick="copyToClipboard('local TestPicker = TestSection:NewColorPicker(pickername, function(newcolor)\n    print(newcolor)\nend, {default = Color3.fromRGB(0, 0, 255)})')">
+            <div id="copybutton"><i class="fa fa-copy fa-lg"></i></div>
+        </button>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(<span style="color: rgb(255, 223, 187)">newcolor</span>)
+        <br>end, {<<span style="color: #f73">color3</span>> default = Color3.fromRGB(0, 0, 255))
+    </h1>
+
+    <!-- SLIDER -->
+    <h1></h1>
+    <h1 class="title">Slider</h1>
+    <h1 class="hljs">
+        <span style="color: rgb(255, 83, 83)">local</span> TestSlider = TestSection:NewSlider(<<span style="color: #f73">string</span>> <span style="color: rgb(255, 223, 187)">"Test Slider"</span>, <<span style="color: #f73">function</span>> function(<span style="color: rgb(255, 223, 187)">newvalue</span>)
+        <br>
+        <button class="buttons" onclick="copyToClipboard('local TestSlider = TestSection:NewSlider(slidername, function(newvalue)\n    print(newvalue)\nend, {value = 0, min = -50, max = 50, suffix = string})')">
+            <div id="copybutton"><i class="fa fa-copy fa-lg"></i></div>
+        </button>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(<span style="color: rgb(255, 223, 187)">newvalue</span>)
+        <br>end, {<<span style="color: #f73">number</span>> value = 0, <<span style="color: #f73">number</span>> min = -50, <<span style="color: #f73">number</span>> max = 50, <<span style="color: #f73">string</span>> suffix = <span style="color: rgb(255, 223, 187)">"°"</span>})
+    </h1>
+
+    <!-- KEYBIND -->
+    <h1></h1>
+    <h1 class="title">Keybind</h1>
+    <h1 class="hljs">
+        <span style="color: rgb(255, 83, 83)">local</span> TestKeybind = TestSection:NewKeybind(<<span style="color: #f73">string</span>> <span style="color: rgb(255, 223, 187)">"Test Keybind"</span>, <<span style="color: #f73">function</span>> function()
+        <br>
+        <button class="buttons" onclick="copyToClipboard('local TestKeybind = TestSection:NewKeybind(keybindname, function()\n    \nend, {keybind = Enum.KeyCode.End})')">
+            <div id="copybutton"><i class="fa fa-copy fa-lg"></i></div>
+        </button>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(<span style="color: rgb(255, 223, 187)">"Pressed!"</span>)
+        <br>end, {<<span style="color: #f73">keycode</span>> keybind = Enum.KeyCode.End})
+    </h1>
+    <h1 class="hljs">
+        <<span style="color: #f73">void</span>> TestKeybind:Fire(<<span style="color: #f73">number</span>> times)
+        <button class="buttons" onclick="copyToClipboard('TestKeybind:Fire(times)')">
+            <div id="copybutton"><i class="fa fa-copy fa-lg"></i></div>
+        </button>
+    </h1>
+    <h1 class="hljs">
+        <<span style="color: #f73">void</span>> TestKeybind:UpdateKeybind(<<span style="color: #f73">keycode</span>> Enum.KeyCode.Home)
+        <button class="buttons" onclick="copyToClipboard('TestKeybind:UpdateKeybind(Enum.KeyCode.Home)')">
+            <div id="copybutton"><i class="fa fa-copy fa-lg"></i></div>
+        </button>
+    </h1>
+
+    <!-- DROPDOWN -->
+    <h1></h1>
+    <h1 class="title">Dropdown</h1>
+    <h1 class="hljs">
+        <span style="color: rgb(255, 83, 83)">local</span> TestDropdown = TestSection:NewDropdown(<<span style="color: #f73">string</span>> <span style="color: rgb(255, 223, 187)">"Test Dropdown"</span>, <<span style="color: #f73">function</span>> function(<span style="color: rgb(255, 223, 187)">option</span>)
+        <br>
+        <button class="buttons" onclick="copyToClipboard('local TestDropdown = TestSection:NewDropdown(dropdownname, function(option)\n    print(option)\nend, {options = {string1, string2}, default = 2})')">
+            <div id="copybutton"><i class="fa fa-copy fa-lg"></i></div>
+        </button>
+        &nbsp;&nbsp;&nbsp;&nbsp;print(<span style="color: rgb(255, 223, 187)">option</span>)
+        <br>end, {<<span style="color: #f73">table</span>> options = {<<span style="color: #f73">string</span>> "Head", <<span style="color: #f73">string</span>> "Torso", <<span style="color: #f73">string</span>> "Foot"}, <<span style="color: #f73">number</span>> default = 3})
+    </h1>
+    <h1 class="hljs">
+        <<span style="color: #f73">void</span>> TestDropdown:SelectOption(<<span style="color: #f73">string</span>> option)
+        <button class="buttons" onclick="copyToClipboard('TestDropdown:SelectOption(string1)')">
+            <div id="copybutton"><i class="fa fa-copy fa-lg"></i></div>
+        </button>
+    </h1>
+    <h1 class="hljs">
+        <<span style="color: #f73">void</span>> TestDropdown:AddOption(<<span style="color: #f73">string</span>> option)
+        <button class="buttons" onclick="copyToClipboard('TestDropdown:AddOption(string3)')">
+            <div id="copybutton"><i class="fa fa-copy fa-lg"></i></div>
+        </button>
+    </h1>
+    <h1 class="hljs">
+        <<span style="color: #f73">void</span>> TestDropdown:RemoveOption(<<span style="color: #f73">string</span>> option)
+        <button class="buttons" onclick="copyToClipboard('TestDropdown:RemoveOption(string3)')">
+            <div id="copybutton"><i class="fa fa-copy fa-lg"></i></div>
+        </button>
+    </h1>
+
+    <h1>
+        <br>
+        <br>
+    </h1>
+</body>
+
+</html>
