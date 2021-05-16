@@ -78,6 +78,7 @@
 
         .wrapper {
             height: 50px;
+            /*This part is important for centering*/
             display: flex;
             align-items: center;
             justify-content: left;
@@ -120,6 +121,7 @@
             el.select();
             document.execCommand('copy');
             document.body.removeChild(el);
+            alert("Copied " + str)
         }
     </script>
 
@@ -130,24 +132,20 @@
     </div>
 
     <!-- DOWNLOAD -->
-    <div  class="buttonhold">
-        Library File
-        <a href="https://raw.githubusercontent.com/Blissful4992/Miscellaneous/main/EssentialUI/main.lua"><button class="downloadbutton">
-            <div id="downloadbutton"><i class="fa fa-arrow-circle-down fa-lg"></i></div>
-        </button></a>
-    </div>
-
     <h1></h1>
-
     <div  class="buttonhold">
         _G["Theme"]
-        <a href="https://raw.githubusercontent.com/Blissful4992/Miscellaneous/main/EssentialUI/theme.lua"><button class="downloadbutton">
+        <a href="https://404"><button class="downloadbutton">
             <div id="downloadbutton"><i class="fa fa-arrow-circle-down fa-lg"></i></div>
         </button></a>
     </div>
 
     <!-- WINDOW -->
     <h1></h1>
+    <h1 class="title">Library</h1>
+    <h1 class="hljs">
+        <span style="color: rgb(255, 83, 83)">local</span> Library = loadstring(game:HttpGet(""))()
+    </h1>
     <h1 class="title">Window <span style="color: rgb(255, 255, 255); font-size: 12px;">Uses <span style="color: rgb(255, 163, 57)">_G[</span><span style="color: rgb(255, 223, 187)">"Theme"</span><span style="color: rgb(255, 163, 57)">]</span> for colors</span></h1>
     <h1 class="hljs">
         <span style="color: rgb(255, 83, 83)">local</span> Hub = Library:NewWindow()
@@ -167,11 +165,7 @@
     <h1 class="title">Page</h1>
     <h1 class="hljs">
         <span style="color: rgb(255, 163, 57)">_G[</span><span style="color: rgb(255, 223, 187)">"pages"</span><span style="color: rgb(255, 163, 57)">]</span> = {}
-        <br>
-        <button class="buttons" onclick="copyToClipboard('G[] = {}\nlocal TestPage = Hub:NewPage(_G[], pagename))')">
-            <div id="copybutton"><i class="fa fa-copy fa-lg"></i></div>
-        </button>
-        <br>
+        <br><br>
         <span style="color: rgb(255, 83, 83)">local</span> TestPage = Hub:NewPage(<span style="color: rgb(255, 163, 57)">_G[</span><span style="color: rgb(255, 223, 187)">"pages"</span><span style="color: rgb(255, 163, 57)">]</span>, <<span style="color: #f73">string</span>> <span style="color: rgb(255, 223, 187)">"Test Page"</span>)
     </h1>
 
