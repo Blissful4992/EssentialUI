@@ -35,7 +35,7 @@ function Library:NewWindow()
     MainWindow.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
     MainWindow.BackgroundTransparency = 0.1
     MainWindow.BorderColor3 = _G["Theme"]["Window_Border"]
-    MainWindow.ClipsDescendants = true
+    MainWindow.ClipsDescendants = false
     MainWindow.Position = UDim2.new(0.17239584, 0, 0.152777776, 0)
     MainWindow.Size = UDim2.new(0, 800, 0, 500)
     MainWindow.Active = true
@@ -839,7 +839,12 @@ function Library:NewWindow()
                         -- CALCULATIONS
                         local difference = info.max - info.min
                         local distance = Bob.AbsolutePosition.X - Bar.AbsolutePosition.X
-                        local outcome = math.round(info.min + distance * difference / (Bar.AbsoluteSize.X - size.X))
+                        local outcome = nil
+                        if info.precise == nil or info.precise == false then
+                            outcome = math.round(info.min + distance * difference / (Bar.AbsoluteSize.X - size.X))
+                        else
+                            outcome = math.floor((info.min + distance * difference / (Bar.AbsoluteSize.X - size.X)) * 100)/100
+                        end
                         Value.Text = tostring(outcome)..tostring(info.suffix)
                         if outcome ~= previous then
                             previous = outcome
