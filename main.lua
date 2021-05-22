@@ -743,6 +743,8 @@ function Library:NewWindow()
                 end)
             end
             function function_library:NewSlider(name, CallBack, info)
+                local precise = info.precise or false
+
                 local Slider = Instance.new("Frame")
                 local SliderName = Instance.new("TextLabel")
                 local Value = Instance.new("TextLabel")
@@ -840,9 +842,9 @@ function Library:NewWindow()
                         local difference = info.max - info.min
                         local distance = Bob.AbsolutePosition.X - Bar.AbsolutePosition.X
                         local outcome = nil
-                        if info.precise == nil or info.precise == false then
+                        if precise == false then
                             outcome = math.round(info.min + distance * difference / (Bar.AbsoluteSize.X - size.X))
-                        else
+                        elseif precise == true then
                             outcome = math.floor((info.min + distance * difference / (Bar.AbsoluteSize.X - size.X)) * 100)/100
                         end
                         Value.Text = tostring(outcome)..tostring(info.suffix)
