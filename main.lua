@@ -47,7 +47,7 @@ function Library:NewWindow()
     local function TOGGLE_UI()
         toggled_ui = not toggled_ui
         if toggled_ui then
-            local previous = MainWindow.AbsolutePosition
+            previous = MainWindow.AbsolutePosition
             TS:Create(MainWindow, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {Position = UDim2.new(0, previous.X, 0, workspace.CurrentCamera.ViewportSize.Y + 10)}):Play()
         else
             TS:Create(MainWindow, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {Position = UDim2.new(0, previous.X, 0, previous.Y)}):Play()
