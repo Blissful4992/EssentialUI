@@ -12,6 +12,7 @@ function Library:NewWindow()
     local ColorModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/Blissful4992/Miscellaneous/main/ColorModule.lua"))()
 
     local UI = Instance.new("ScreenGui")
+    syn.protect_gui(UI)
     local MainWindow = Instance.new("Frame")
     local TopBar = Instance.new("Frame")
     local ProjectTitle = Instance.new("TextLabel")
@@ -29,14 +30,12 @@ function Library:NewWindow()
     UI.ZIndexBehavior = Enum.ZIndexBehavior.Global
     UI.ResetOnSpawn = false
 
-    -- syn.protect_gui(UI)
-
     MainWindow.Name = "MainWindow"
     MainWindow.Parent = UI
     MainWindow.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
     MainWindow.BackgroundTransparency = 0.1
     MainWindow.BorderColor3 = _G["Theme"]["Window_Border"]
-    MainWindow.ClipsDescendants = true
+    MainWindow.ClipsDescendants = false
     MainWindow.Position = UDim2.new(0.17239584, 0, 0.152777776, 0)
     MainWindow.Size = UDim2.new(0, 800, 0, 500)
     MainWindow.Active = true
@@ -89,17 +88,6 @@ function Library:NewWindow()
     CloseButton.Image = "rbxassetid://6814382218"
     CloseButton.ImageColor3 = Color3.fromRGB(255, 255, 255)
 
-    MinimizeButton.Name = "MinimizeButton"
-    MinimizeButton.Parent = TopBar
-    MinimizeButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    MinimizeButton.BackgroundTransparency = 1.000
-    MinimizeButton.Position = UDim2.new(1, -63, 0.5, -11)
-    MinimizeButton.Size = UDim2.new(0, 22, 0, 22)
-    MinimizeButton.ZIndex = 4
-    MinimizeButton.AutoButtonColor = false
-    MinimizeButton.Image = "rbxassetid://6820104010"
-    MinimizeButton.ImageColor3 = Color3.fromRGB(255, 255, 255)
-
     CloseButton.MouseEnter:Connect(function()
         TS:Create(CloseButton, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(215, 215, 215)}):Play()
     end)
@@ -109,18 +97,6 @@ function Library:NewWindow()
     end)
 
     CloseButton.MouseButton1Click:Connect(function()
-        UI:Destroy()
-    end)
-
-    MinimizeButton.MouseEnter:Connect(function()
-        TS:Create(MinimizeButton, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(215, 215, 215)}):Play()
-    end)
-
-    MinimizeButton.MouseLeave:Connect(function()
-        TS:Create(MinimizeButton, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(255, 255, 255)}):Play()
-    end)
-
-    MinimizeButton.MouseButton1Click:Connect(function()
         TOGGLE_UI()
     end)
 
@@ -1028,7 +1004,7 @@ function Library:NewWindow()
                 Detector.AutoButtonColor = false
                 Detector.Font = Enum.Font.SourceSans
                 Detector.TextColor3 = Color3.fromRGB(255, 255, 255)
-                Detector.ZIndex = dropdownzindex
+                Detector.ZIndex = 2
                 Detector.TextSize = 14.000
                 Detector.TextColor3 = _G["Theme"]["Dropdown_Main_Option"]
                 Detector.TextWrapped = true
@@ -1040,7 +1016,7 @@ function Library:NewWindow()
                 Arrow.BorderSizePixel = 0
                 Arrow.Position = UDim2.new(1, -20, 0.5, -2)
                 Arrow.Size = UDim2.new(0, 10, 0, 6)
-                Arrow.ZIndex = dropdownzindex + 1
+                Arrow.ZIndex = 3
                 Arrow.Image = "rbxassetid://6820979846"
                 Arrow.ImageColor3 = _G["Theme"]["Dropdown_Arrow"]
 
