@@ -35,7 +35,7 @@ function Library:NewWindow()
     MainWindow.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
     MainWindow.BackgroundTransparency = 0.1
     MainWindow.BorderColor3 = _G["Theme"]["Window_Border"]
-    MainWindow.ClipsDescendants = false
+    MainWindow.ClipsDescendants = true
     MainWindow.Position = UDim2.new(0.17239584, 0, 0.152777776, 0)
     MainWindow.Size = UDim2.new(0, 800, 0, 500)
     MainWindow.Active = true
@@ -188,7 +188,7 @@ function Library:NewWindow()
         Page_Category.BorderSizePixel = 0
         Page_Category.Visible = false
         Page_Category.Size = UDim2.new(1, 0, 1, 0)
-        Page_Category.ClipsDescendants = true
+        Page_Category.ClipsDescendants = false
 
         Column1.Name = "Column1"
         Column1.Parent = Page_Category
