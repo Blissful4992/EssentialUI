@@ -13,11 +13,17 @@ function Library:NewWindow()
 
     local UI = Instance.new("ScreenGui")
     syn.protect_gui(UI)
+    
     local MainWindow = Instance.new("Frame")
     local TopBar = Instance.new("Frame")
     local ProjectTitle = Instance.new("TextLabel")
     local CloseButton = Instance.new("ImageButton")
     local MinimizeButton = Instance.new("ImageButton")
+
+    local Click = Instance.new('Sound')
+    Click.Parent = game.StarterGui
+    Click.Name = "click"
+    Click.SoundId = "rbxassetid://6849923571"
 
     local Categories = Instance.new("Frame")
 
@@ -318,6 +324,7 @@ function Library:NewWindow()
                 end)
 
                 Detector.MouseButton1Click:Connect(function()
+                    Click:Play()
                     CallBack()
                 end)
 
@@ -398,6 +405,7 @@ function Library:NewWindow()
                 end
 
                 Detector.MouseButton1Click:Connect(function()
+                    Click:Play()
                     Toggle()
                 end)
                 local current_bind = info.keybind or nil
@@ -407,6 +415,7 @@ function Library:NewWindow()
                     if game.CoreGui:FindFirstChild(_G["UI_Info"]["Project_Name"]) == nil then
                         c:Disconnect()
                     elseif input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == current_bind then
+                        Click:Play()
                         Toggle()
                     end
                 end)
@@ -624,6 +633,7 @@ function Library:NewWindow()
                 end
 
                 Detector.MouseButton1Click:Connect(function()
+                    Click:Play()
                     PickerFrame.Visible = not PickerFrame.Visible
                 end)
 
@@ -921,6 +931,7 @@ function Library:NewWindow()
                     local connection2
                     connection = UIS.InputBegan:Connect(function(input)
                         if input.UserInputType == Enum.UserInputType.Keyboard then
+                            Click:Play()
                             current_bind = input.KeyCode
                             Detector.Text = string.sub(tostring(current_bind), 14, #tostring(current_bind))
                             Scale("["..string.sub(tostring(current_bind), 14, #tostring(current_bind)).."]")
@@ -1060,6 +1071,7 @@ function Library:NewWindow()
                 end)
 
                 Detector.MouseButton1Click:Connect(function()
+                    Click:Play()
                     OptionsList.Visible = not OptionsList.Visible
                 end)
 
