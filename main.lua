@@ -43,13 +43,15 @@ function Library:NewWindow()
     MainWindow.Draggable = true
 
     local toggled_ui = false
+    local previous = MainWindow.AbsolutePosition
 
     local function TOGGLE_UI()
         toggled_ui = not toggled_ui
         if toggled_ui then
-            TS:Create(MainWindow, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {Size = UDim2.new(0, 800, 0, 40)}):Play()
+            local previous = MainWindow.AbsolutePosition
+            TS:Create(MainWindow, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {Position = UDim2.new(0, previous.X, 0, workspace.CurrentCamera.ViewportSize.Y + 10)}):Play()
         else
-            TS:Create(MainWindow, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {Size = UDim2.new(0, 800, 0, 500)}):Play()
+            TS:Create(MainWindow, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {Position = UDim2.new(0, previous.X, 0, previous.Y)}):Play()
         end
     end
 
@@ -1153,4 +1155,5 @@ function Library:NewWindow()
     end
     return structurer
 end
+
 return Library
