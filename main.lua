@@ -170,7 +170,7 @@ function Library:NewWindow()
                 v.Detector.Bob.BackgroundColor3 = _G["Theme"]["Slider_Bob"]
             elseif v.Name == "Keybind" then
                 v.Detector.BorderColor3 = _G["Theme"]["Keybind_Border"]
-                v.Detector.TextColor3 = _G["Theme"]["Item_Name_Color"]
+                v.KeybindName.TextColor3 = _G["Theme"]["Item_Name_Color"]
             elseif v.Name == "Dropdown" then
                 v.DropdownName.TextColor3 = _G["Theme"]["Item_Name_Color"]
                 v.Detector.BorderColor3 = _G["Theme"]["Dropdown_Border"]
@@ -935,7 +935,7 @@ function Library:NewWindow()
                 KeybindName.Position = UDim2.new(0, 10, 0, 0)
                 KeybindName.Size = UDim2.new(0, 2, 1, 0)
                 KeybindName.Font = Enum.Font.SourceSans
-                KeybindName.TextColor3 = Color3.fromRGB(255, 255, 255)
+                KeybindName.TextColor3 = _G["Theme"]["Item_Name_Color"]
                 KeybindName.Text = name
                 KeybindName.TextSize = 15.000
                 KeybindName.TextXAlignment = Enum.TextXAlignment.Left
@@ -949,7 +949,7 @@ function Library:NewWindow()
                 Detector.AutoButtonColor = false
                 Detector.Font = Enum.Font.SourceSans
                 Detector.Text = string.sub(tostring(current_bind), 14, #tostring(current_bind))
-                Detector.TextColor3 = _G["Theme"]["Item_Name_Color"]
+                Detector.TextColor3 = Color3.fromRGB(255, 255, 255)
                 Detector.TextSize = 14.000
 
                 Section.Size = UDim2.new(1, 0, 0, SectionListLayout.AbsoluteContentSize.Y)
