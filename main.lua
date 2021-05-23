@@ -449,9 +449,7 @@ function Library:NewWindow()
 
                 local c
                 c = UIS.InputBegan:Connect(function(input)
-                    if game.CoreGui:FindFirstChild(_G["UI_Info"]["Project_Name"]) == nil then
-                        c:Disconnect()
-                    elseif input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == current_bind then
+                    if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == current_bind then
                         -- Click:Play()
                         Toggle()
                     end
@@ -996,12 +994,8 @@ function Library:NewWindow()
 
                 local c
                 c = UIS.InputBegan:Connect(function(input)
-                    if game.CoreGui:FindFirstChild(_G["UI_Info"]["Project_Name"]) == nil then
-                        c:Disconnect()
-                    else
-                        if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == current_bind and Selecting == false then
-                            CallBack()
-                        end
+                    if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == current_bind and Selecting == false then
+                        CallBack()
                     end
                 end)
 
