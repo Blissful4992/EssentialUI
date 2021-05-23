@@ -111,11 +111,11 @@ function Library:NewWindow()
     CloseButton.ImageColor3 = _G["Theme"]["Close_Button"]
 
     CloseButton.MouseEnter:Connect(function()
-        TS:Create(CloseButton, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(215, 215, 215)}):Play()
+        TS:Create(CloseButton, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ImageTransparency = 0.3}):Play()
     end)
 
     CloseButton.MouseLeave:Connect(function()
-        TS:Create(CloseButton, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(255, 255, 255)}):Play()
+        TS:Create(CloseButton, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ImageTransparency = 0}):Play()
     end)
 
     CloseButton.MouseButton1Click:Connect(function()
