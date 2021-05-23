@@ -145,6 +145,42 @@ function Library:NewWindow()
         TOGGLE_UI()
     end
 
+    function structurer:UpdateTheme()
+        UI.Name = _G["UI_Info"]["Project_Name"]
+        ProjectTitle.Text = _G["UI_Info"]["Project_Title"]
+        MainWindow.BorderColor3 = _G["Theme"]["Window_Border"]
+
+        for i,v in pairs(UI:GetDescendants()) do
+            if v.Name == "Section" then
+                v.BackgroundColor3 = _G["Theme"]["Section_Background"]
+                v.SectionTitle.TextColor3 = _G["Theme"]["Section_Title"]
+            elseif v.Name == "Button" then
+                v.Detector.BorderColor3 = _G["Theme"]["Button"]
+                v.Detector.TextColor3 = _G["Theme"]["Item_Name_Color"]
+            elseif v.Name == "Toggle" then
+                v.Detector.BorderColor3 = _G["Theme"]["Toggle"]
+            elseif v.Name == "ColorPicker" then
+                v.PickerName.TextColor3 = _G["Theme"]["Item_Name_Color"]
+                v.Detector.PickerBorder.ImageColor3 = _G["Theme"]["Color_Picker"]
+                v.PickerFrame.BorderColor3 = _G["Theme"]["Color_Picker_Selector_Frame"]
+            elseif v.Name == "Slider" then
+                v.SliderName.TextColor3 = _G["Theme"]["Item_Name_Color"]
+                v.Value.TextColor3 = _G["Theme"]["Slider_Value"]
+                v.Detector.Bar.BackgroundColor3 = _G["Theme"]["Slider_Bar"]
+                v.Detector.Bob.BackgroundColor3 = _G["Theme"]["Slider_Bob"]
+            elseif v.Name == "Keybind" then
+                v.Detector.BorderColor3 = _G["Theme"]["Keybind_Border"]
+            elseif v.Name == "Dropdown" then
+                v.DropdownName.TextColor3 = _G["Theme"]["Item_Name_Color"]
+                v.Detector.BorderColor3 = _G["Theme"]["Dropdown_Border"]
+                v.Detector.TextColor3 = _G["Theme"]["Dropdown_Main_Option"]
+                v.Detector.Arrow.ImageColor3 = _G["Theme"]["Dropdown_Arrow"]
+            elseif v.Name == "Option" then
+                v.TextColor3 = _G["Theme"]["Dropdown_Options"]
+            end
+        end
+    end
+
     function structurer:NewPage(tbl, page_name)
         local CurrentPageNumber = #tbl + 1
         local page_info = {["name"] = page_name, ["idx"] = CurrentPageNumber}
@@ -261,7 +297,7 @@ function Library:NewWindow()
             local SectionListLayout = Instance.new("UIListLayout")
             local SectionTitle = Instance.new("TextLabel")
 
-            Section.Name = name
+            Section.Name = "Section"
             if Column1:FindFirstChildOfClass("Frame") == nil then
                 Section.Parent = Column1
             elseif Column2:FindFirstChildOfClass("Frame") == nil then
