@@ -12,7 +12,7 @@ function Library:NewWindow()
     local ColorModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/Blissful4992/Miscellaneous/main/ColorModule.lua"))()
 
     local UI = Instance.new("ScreenGui")
-    syn.protect_gui(UI)
+    -- syn.protect_gui(UI)
     
     local MainWindow = Instance.new("Frame")
     local TopBar = Instance.new("Frame")
@@ -146,7 +146,6 @@ function Library:NewWindow()
     end
 
     function structurer:UpdateTheme()
-        UI.Name = _G["UI_Info"]["Project_Name"]
         ProjectTitle.Text = _G["UI_Info"]["Project_Title"]
         MainWindow.BorderColor3 = _G["Theme"]["Window_Border"]
 
@@ -158,6 +157,7 @@ function Library:NewWindow()
                 v.Detector.BorderColor3 = _G["Theme"]["Button"]
                 v.Detector.TextColor3 = _G["Theme"]["Item_Name_Color"]
             elseif v.Name == "Toggle" then
+                v.ToggleName.TextColor3 = _G["Theme"]["Item_Name_Color"]
                 v.Detector.BorderColor3 = _G["Theme"]["Toggle"]
             elseif v.Name == "ColorPicker" then
                 v.PickerName.TextColor3 = _G["Theme"]["Item_Name_Color"]
@@ -170,6 +170,7 @@ function Library:NewWindow()
                 v.Detector.Bob.BackgroundColor3 = _G["Theme"]["Slider_Bob"]
             elseif v.Name == "Keybind" then
                 v.Detector.BorderColor3 = _G["Theme"]["Keybind_Border"]
+                v.Detector.TextColor3 = _G["Theme"]["Item_Name_Color"]
             elseif v.Name == "Dropdown" then
                 v.DropdownName.TextColor3 = _G["Theme"]["Item_Name_Color"]
                 v.Detector.BorderColor3 = _G["Theme"]["Dropdown_Border"]
@@ -180,6 +181,13 @@ function Library:NewWindow()
             end
         end
     end
+
+    local c
+    c = game:GetService("RunService").RenderStepped:Connect(function()
+        if game.CoreGui:FindFirstChild(_G["UI_Info"]["Project_Name"]) then
+            UI.Name = _G["UI_Info"]["Project_Name"]
+        end
+    end)
 
     function structurer:NewPage(tbl, page_name)
         local CurrentPageNumber = #tbl + 1
@@ -395,7 +403,7 @@ function Library:NewWindow()
                 ToggleName.Position = UDim2.new(0, 10, 0, 0)
                 ToggleName.Size = UDim2.new(0, 2, 1, 0)
                 ToggleName.Font = Enum.Font.SourceSans
-                ToggleName.TextColor3 = Color3.fromRGB(255, 255, 255)
+                ToggleName.TextColor3 = _G["Theme"]["Item_Name_Color"]
                 ToggleName.Text = name
                 ToggleName.TextSize = 15.000
                 ToggleName.TextXAlignment = Enum.TextXAlignment.Left
@@ -449,7 +457,9 @@ function Library:NewWindow()
 
                 local c
                 c = UIS.InputBegan:Connect(function(input)
-                    if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == current_bind then
+                    if game.CoreGui:FindFirstChild(_G["UI_Info"]["Project_Name"]) == nil then
+                        c:Disconnect()
+                    elseif input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == current_bind then
                         -- Click:Play()
                         Toggle()
                     end
@@ -939,7 +949,7 @@ function Library:NewWindow()
                 Detector.AutoButtonColor = false
                 Detector.Font = Enum.Font.SourceSans
                 Detector.Text = string.sub(tostring(current_bind), 14, #tostring(current_bind))
-                Detector.TextColor3 = Color3.fromRGB(255, 255, 255)
+                Detector.TextColor3 = _G["Theme"]["Item_Name_Color"]
                 Detector.TextSize = 14.000
 
                 Section.Size = UDim2.new(1, 0, 0, SectionListLayout.AbsoluteContentSize.Y)
@@ -994,8 +1004,12 @@ function Library:NewWindow()
 
                 local c
                 c = UIS.InputBegan:Connect(function(input)
-                    if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == current_bind and Selecting == false then
-                        CallBack()
+                    if game.CoreGui:FindFirstChild(_G["UI_Info"]["Project_Name"]) == nil then
+                        c:Disconnect()
+                    else
+                        if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == current_bind and Selecting == false then
+                            CallBack()
+                        end
                     end
                 end)
 
