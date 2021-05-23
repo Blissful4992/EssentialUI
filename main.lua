@@ -108,7 +108,7 @@ function Library:NewWindow()
     CloseButton.AutoButtonColor = false
     CloseButton.ZIndex = 4
     CloseButton.Image = "rbxassetid://6814382218"
-    CloseButton.ImageColor3 = Color3.fromRGB(255, 255, 255)
+    CloseButton.ImageColor3 = _G["Theme"]["Close_Button"]
 
     CloseButton.MouseEnter:Connect(function()
         TS:Create(CloseButton, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(215, 215, 215)}):Play()
@@ -163,6 +163,7 @@ function Library:NewWindow()
     function structurer:UpdateTheme()
         ProjectTitle.Text = _G["UI_Info"]["Project_Title"]
         MainWindow.BorderColor3 = _G["Theme"]["Window_Border"]
+        CloseButton.ImageColor3 = _G["Theme"]["Close_Button"]
 
         for i,v in pairs(UI:GetDescendants()) do
             if v.Name == "Section" then
@@ -196,13 +197,6 @@ function Library:NewWindow()
             end
         end
     end
-
-    local c
-    c = game:GetService("RunService").RenderStepped:Connect(function()
-        if game.CoreGui:FindFirstChild(project_name) then
-            UI.Name = project_name
-        end
-    end)
 
     function structurer:NewPage(tbl, page_name)
         local CurrentPageNumber = #tbl + 1
