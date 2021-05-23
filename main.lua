@@ -1,10 +1,25 @@
-if game.CoreGui:FindFirstChild(_G["UI_Info"]["Project_Name"]) then
-    return
+local chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%'
+local length = 15
+
+math.randomseed(os.time())
+
+local charTable = {}
+for c in chars:gmatch "." do
+    table.insert(charTable, c)
+end
+
+local function newstring()
+    local a = ''
+    for i = 1, length do
+        a = a .. charTable[math.random(1, #charTable)]
+    end
+    return a
 end
 
 local Library = {}
 
 function Library:NewWindow()
+    local project_name = newstring()
     local Player = game:GetService("Players").LocalPlayer
     local Mouse = Player:GetMouse()
     local TS = game:service("TweenService")
@@ -32,7 +47,7 @@ function Library:NewWindow()
     local PageListLayout = Instance.new("UIListLayout")
     local Credits = Instance.new("TextLabel")
 
-    UI.Name = _G["UI_Info"]["Project_Name"]
+    UI.Name = project_name
     UI.Parent = game.CoreGui
     UI.ZIndexBehavior = Enum.ZIndexBehavior.Global
     UI.ResetOnSpawn = false
@@ -184,8 +199,8 @@ function Library:NewWindow()
 
     local c
     c = game:GetService("RunService").RenderStepped:Connect(function()
-        if game.CoreGui:FindFirstChild(_G["UI_Info"]["Project_Name"]) then
-            UI.Name = _G["UI_Info"]["Project_Name"]
+        if game.CoreGui:FindFirstChild(project_name) then
+            UI.Name = project_name
         end
     end)
 
@@ -457,7 +472,7 @@ function Library:NewWindow()
 
                 local c
                 c = UIS.InputBegan:Connect(function(input)
-                    if game.CoreGui:FindFirstChild(_G["UI_Info"]["Project_Name"]) == nil then
+                    if game.CoreGui:FindFirstChild(project_name) == nil then
                         c:Disconnect()
                     elseif input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == current_bind then
                         -- Click:Play()
@@ -1004,7 +1019,7 @@ function Library:NewWindow()
 
                 local c
                 c = UIS.InputBegan:Connect(function(input)
-                    if game.CoreGui:FindFirstChild(_G["UI_Info"]["Project_Name"]) == nil then
+                    if game.CoreGui:FindFirstChild(project_name) == nil then
                         c:Disconnect()
                     else
                         if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == current_bind and Selecting == false then
