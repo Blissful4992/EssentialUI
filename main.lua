@@ -544,7 +544,7 @@ function Library:NewWindow()
                 Detector.AutoButtonColor = false
 
                 Detector.MouseEnter:Connect(function()
-                    TS:Create(Detector, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 0.05}):Play()
+                    TS:Create(Detector, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 0.2}):Play()
                 end)
             
                 Detector.MouseLeave:Connect(function()
