@@ -665,11 +665,11 @@ function Library:NewWindow()
                 Indicator.Size = UDim2.new(1, 0, 0, 2)
 
                 CopyValues.MouseEnter:Connect(function()
-                    CopyValues.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+                    TS:Create(CopyValues, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 0.2}):Play()
                 end)
-
+            
                 CopyValues.MouseLeave:Connect(function()
-                    CopyValues.BackgroundColor3 = Color3.fromRGB(28, 28, 28)
+                    TS:Create(CopyValues, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
                 end)
 
                 CopyValues.MouseButton1Click:Connect(function()
