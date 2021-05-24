@@ -200,6 +200,7 @@ function Library:NewWindow()
 
     function structurer:Kill()
         UI:Destroy()
+        game.CoreGui:FindFirstChild(project_name):Destroy()
     end
 
     function structurer:NewPage(tbl, page_name)
