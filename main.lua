@@ -544,11 +544,11 @@ function Library:NewWindow()
                 Detector.ZIndex = 2
 
                 Detector.MouseEnter:Connect(function()
-                    TS:Create(Detector, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 0.05}):Play()
+                    TS:Create(Detector, TweenInfo.new(0.1, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 0.05}):Play()
                 end)
             
                 Detector.MouseLeave:Connect(function()
-                    TS:Create(Detector, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
+                    TS:Create(Detector, TweenInfo.new(0.1, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
                 end)
 
                 Section.Size = UDim2.new(1, 0, 0, SectionListLayout.AbsoluteContentSize.Y)
