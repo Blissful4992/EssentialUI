@@ -112,4 +112,32 @@ themes["Grayscale"] = {
     ["Dropdown_Options"] = Color3.fromRGB(222, 226, 230),
 }
 
+themes["Midnight"] = {
+    ["Window_Border"] = Color3.fromRGB(69, 4, 122),
+    ["Close_Button"] = Color3.fromRGB(210, 210, 210),
+    
+    ["Section_Title"] = Color3.fromRGB(220, 220, 220),
+    ["Section_Background"] = Color3.fromRGB(0, 0, 20),
+
+    ["Item_Name_Color"] = Color3.fromRGB(240, 240, 240),
+
+    ["Button"] = Color3.fromRGB(69, 4, 122),
+
+    ["Toggle"] = Color3.fromRGB(69, 4, 122),
+
+    ["Color_Picker"] = Color3.fromRGB(69, 4, 122),
+    ["Color_Picker_Selector_Frame"] = Color3.fromRGB(69, 4, 122),
+
+    ["Slider_Bar"] = Color3.fromRGB(75, 0, 105),
+    ["Slider_Bob"] = Color3.fromRGB(220, 220, 220),
+    ["Slider_Value"] = Color3.fromRGB(220, 220, 220),
+
+    ["Keybind_Border"] = Color3.fromRGB(69, 4, 122),
+
+    ["Dropdown_Border"] = Color3.fromRGB(69, 4, 122),
+    ["Dropdown_Arrow"] = Color3.fromRGB(69, 4, 122),
+    ["Dropdown_Main_Option"] = Color3.fromRGB(220, 220, 220),
+    ["Dropdown_Options"] = Color3.fromRGB(222, 226, 230),
+}
+
 return themes
