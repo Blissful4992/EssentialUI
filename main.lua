@@ -896,7 +896,7 @@ function Library:NewWindow()
                 Bob.BackgroundColor3 = _G["Theme"]["Slider_Bob"]
                 Bob.BorderSizePixel = 0
                 Bob.Position = u2(0, 0, 0.5, -1)
-                Bob.Size = u2(0, 2, 0, 4)
+                Bob.Size = u2(0, 4, 0, 2)
 
                 Section.Size = u2(1, 0, 0, SectionListLayout.AbsoluteContentSize.Y)
 
