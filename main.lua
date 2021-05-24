@@ -1175,7 +1175,7 @@ function Library:NewWindow()
                         Option.TextSize = 13.000
     
                         Option.MouseEnter:Connect(function()
-                            TS:Create(Option, tween(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 0.3}):Play()
+                            TS:Create(Option, tween(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 0.1}):Play()
                         end)
         
                         Option.MouseLeave:Connect(function()
