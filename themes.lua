@@ -79,7 +79,7 @@ local themes = {
         ["Keybind_Border"] = Color3.fromRGB(67, 97, 238),
 
         ["Dropdown_Border"] = Color3.fromRGB(67, 97, 238),
-        ["Dropdown_Arrow"] = Color3.fromRGB(67, 97, 238),
+        ["Dropdown_Arrow"] = Color3.fromRGB(255, 255, 255),
         ["Dropdown_Main_Option"] = Color3.fromRGB(175, 240, 255),
         ["Dropdown_Options"] = Color3.fromRGB(220, 220, 220),
     },
@@ -107,7 +107,7 @@ local themes = {
         ["Keybind_Border"] = Color3.fromRGB(140, 140, 140),
 
         ["Dropdown_Border"] = Color3.fromRGB(140, 140, 140),
-        ["Dropdown_Arrow"] = Color3.fromRGB(140, 140, 140),
+        ["Dropdown_Arrow"] = Color3.fromRGB(255, 255, 255),
         ["Dropdown_Main_Option"] = Color3.fromRGB(240, 240, 240),
         ["Dropdown_Options"] = Color3.fromRGB(220, 220, 220),
     },
