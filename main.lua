@@ -177,7 +177,7 @@ function Library:NewWindow()
                 v.Detector.BorderColor3 = _G["Theme"]["Toggle"]
             elseif v.Name == "ColorPicker" then
                 v.PickerName.TextColor3 = _G["Theme"]["Item_Name_Color"]
-                v.Detector.PickerBorder.ImageColor3 = _G["Theme"]["Color_Picker"]
+                v.Detector.BorderColor3 = _G["Theme"]["Color_Picker"]
                 v.PickerFrame.BorderColor3 = _G["Theme"]["Color_Picker_Selector_Frame"]
             elseif v.Name == "Slider" then
                 v.SliderName.TextColor3 = _G["Theme"]["Item_Name_Color"]
@@ -530,31 +530,20 @@ function Library:NewWindow()
                 Detector.Name = "Detector"
                 Detector.Parent = ColorPicker
                 Detector.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                Detector.BackgroundTransparency = 1.000
-                Detector.BorderSizePixel = 0
+                Detector.BorderColor3 = _G["Theme"]["Color_Picker"]
+                Detector.BackgroundTransparency = 0
+                Detector.BorderSizePixel = 1
                 Detector.Position = UDim2.new(1, -34, 0.5, -6)
                 Detector.Size = UDim2.new(0, 25, 0, 12)
                 Detector.ZIndex = 2
 
-                PickerBorder.Name = "PickerBorder"
-                PickerBorder.Parent = Detector
-                PickerBorder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                PickerBorder.BackgroundTransparency = 1.000
-                PickerBorder.Position = UDim2.new(0, -1, 0, -1)
-                PickerBorder.Size = UDim2.new(0, 27, 0, 14)
-                PickerBorder.Image = "rbxassetid://6815363931"
-                PickerBorder.ImageColor3 = _G["Theme"]["Color_Picker"]
-                PickerBorder.ImageTransparency = 0.750
-
-                Style.Name = "Style"
-                Style.Parent = Detector
-                Style.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                Style.BackgroundTransparency = 1.000
-                Style.Size = UDim2.new(0, 25, 0, 12)
-                Style.ZIndex = 2
-                Style.Image = "rbxassetid://6815363931"
-                Style.ImageColor3 = info.default or Color3.fromRGB(255, 255, 255)
-                Style.ImageTransparency = 0
+                Detector.MouseEnter:Connect(function()
+                    TS:Create(Detector, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ImageTransparency = 0.15}):Play()
+                end)
+            
+                Detector.MouseLeave:Connect(function()
+                    TS:Create(Detector, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ImageTransparency = 0}):Play()
+                end)
 
                 Section.Size = UDim2.new(1, 0, 0, SectionListLayout.AbsoluteContentSize.Y)
 
@@ -730,7 +719,7 @@ function Library:NewWindow()
                     Value1.Text = math.round(newh)
                     Value2.Text = math.round(news)
                     Value3.Text = math.round(newv)
-                    Style.ImageColor3 = Color3.fromRGB(math.round(newh), math.round(news), math.round(newv))
+                    Detector.ImageColor3 = Color3.fromRGB(math.round(newh), math.round(news), math.round(newv))
                     CallBack(Color3.fromRGB(newh, news, newv))
                 end
 
@@ -748,7 +737,7 @@ function Library:NewWindow()
                     if (SelectingHUE == false and SelectingHSV == false) and tostring(property) == "Text" and tonumber(Value1.Text) then
                         Value1.Text = math.clamp(tonumber(Value1.Text), 0, 255)
                         PlaceColor(Color3.fromRGB(tonumber(Value1.Text), tonumber(Value2.Text), tonumber(Value3.Text)))
-                        Style.ImageColor3 = Color3.fromRGB(tonumber(Value1.Text), tonumber(Value2.Text), tonumber(Value3.Text))
+                        Detector.ImageColor3 = Color3.fromRGB(tonumber(Value1.Text), tonumber(Value2.Text), tonumber(Value3.Text))
                         prev1 = tonumber(Value1.Text)
                     elseif (SelectingHUE == false and SelectingHSV == false) and tostring(property) == "Text" and Value1.Text == " " then
                         Value1.Text = prev1
@@ -760,7 +749,7 @@ function Library:NewWindow()
                     if (SelectingHUE == false and SelectingHSV == false) and tostring(property) == "Text" and tonumber(Value2.Text) then
                         Value2.Text = math.clamp(tonumber(Value2.Text), 0, 255)
                         PlaceColor(Color3.fromRGB(tonumber(Value1.Text), tonumber(Value2.Text), tonumber(Value3.Text)))
-                        Style.ImageColor3 = Color3.fromRGB(tonumber(Value1.Text), tonumber(Value2.Text), tonumber(Value3.Text))
+                        Detector.ImageColor3 = Color3.fromRGB(tonumber(Value1.Text), tonumber(Value2.Text), tonumber(Value3.Text))
                         prev2 = tonumber(Value2.Text)
                     elseif (SelectingHUE == false and SelectingHSV == false) and tostring(property) == "Text" and Value2.Text == " " then
                         Value2.Text = prev2
@@ -772,7 +761,7 @@ function Library:NewWindow()
                     if (SelectingHUE == false and SelectingHSV == false) and tostring(property) == "Text" and tonumber(Value3.Text) then
                         Value3.Text = math.clamp(tonumber(Value3.Text), 0, 255)
                         PlaceColor(Color3.fromRGB(tonumber(Value1.Text), tonumber(Value2.Text), tonumber(Value3.Text)))
-                        Style.ImageColor3 = Color3.fromRGB(tonumber(Value1.Text), tonumber(Value2.Text), tonumber(Value3.Text))
+                        Detector.ImageColor3 = Color3.fromRGB(tonumber(Value1.Text), tonumber(Value2.Text), tonumber(Value3.Text))
                         prev3 = tonumber(Value3.Text)
                     elseif (SelectingHUE == false and SelectingHSV == false) and tostring(property) == "Text" and Value3.Text == " " then
                         Value3.Text = prev3
