@@ -56,4 +56,32 @@ themes["Forest"] = {
     ["Dropdown_Options"] = Color3.fromRGB(220, 220, 220),
 }
 
+themes["Ocean"] = {
+    ["Window_Border"] = Color3.fromRGB(67, 97, 238),
+    ["Close_Button"] = Color3.fromRGB(67, 97, 238),
+    
+    ["Section_Title"] = Color3.fromRGB(122, 206, 255),
+    ["Section_Background"] = Color3.fromRGB(0, 0, 20),
+
+    ["Item_Name_Color"] = Color3.fromRGB(220, 220, 220),
+
+    ["Button"] = Color3.fromRGB(67, 97, 238),
+
+    ["Toggle"] = Color3.fromRGB(67, 97, 238),
+
+    ["Color_Picker"] = Color3.fromRGB(67, 97, 238),
+    ["Color_Picker_Selector_Frame"] = Color3.fromRGB(67, 97, 238),
+
+    ["Slider_Bar"] = Color3.fromRGB(67, 97, 238),
+    ["Slider_Bob"] = Color3.fromRGB(220, 220, 220),
+    ["Slider_Value"] = Color3.fromRGB(176, 254, 255),
+
+    ["Keybind_Border"] = Color3.fromRGB(67, 97, 238),
+
+    ["Dropdown_Border"] = Color3.fromRGB(67, 97, 238),
+    ["Dropdown_Arrow"] = Color3.fromRGB(67, 97, 238),
+    ["Dropdown_Main_Option"] = Color3.fromRGB(176, 254, 255),
+    ["Dropdown_Options"] = Color3.fromRGB(220, 220, 220),
+}
+
 return themes
