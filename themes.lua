@@ -30,9 +30,9 @@ themes["Default"] = {
 
 themes["Forest"] = {
     ["Window_Border"] = Color3.fromRGB(0, 94, 0),
-    ["Close_Button"] = Color3.fromRGB(0, 100, 20),
+    ["Close_Button"] = Color3.fromRGB(40, 175, 100),
     
-    ["Section_Title"] = Color3.fromRGB(60, 190, 115),
+    ["Section_Title"] = Color3.fromRGB(191, 255, 189),
     ["Section_Background"] = Color3.fromRGB(0, 0, 20),
 
     ["Item_Name_Color"] = Color3.fromRGB(220, 220, 220),
@@ -52,7 +52,7 @@ themes["Forest"] = {
 
     ["Dropdown_Border"] = Color3.fromRGB(0, 94, 0),
     ["Dropdown_Arrow"] = Color3.fromRGB(60, 190, 115),
-    ["Dropdown_Main_Option"] = Color3.fromRGB(60, 190, 115),
+    ["Dropdown_Main_Option"] = Color3.fromRGB(191, 255, 189),
     ["Dropdown_Options"] = Color3.fromRGB(220, 220, 220),
 }
 
