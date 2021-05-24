@@ -1,6 +1,6 @@
 local themes = {}
 
-themes["Default"] = {
+themes["Fire"] = {
     ["Window_Border"] = Color3.fromRGB(166, 94, 0),
     ["Close_Button"] = Color3.fromRGB(175, 100, 20),
 
