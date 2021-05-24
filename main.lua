@@ -33,6 +33,8 @@ end
 local Library = {}
 
 function Library:NewWindow()
+    local DESTROY_GUI = false
+
     local project_name = newstring()
     local Player = game:GetService("Players").LocalPlayer
     local Mouse = Player:GetMouse()
@@ -104,7 +106,7 @@ function Library:NewWindow()
     ProjectTitle.BackgroundTransparency = 1.000
     ProjectTitle.Position = u2(0, 10, 0, 0)
     ProjectTitle.Size = u2(0.5, 0, 1, 0)
-    ProjectTitle.Font = Enum.Font.Arial
+    ProjectTitle.Font = Enum.Font.Gotham
     ProjectTitle.RichText = true
     ProjectTitle.ZIndex = 4
     ProjectTitle.Text = _G["UI_Info"]["Project_Title"]
@@ -215,6 +217,7 @@ function Library:NewWindow()
     end
 
     function structurer:Kill()
+        DESTROY_GUI = true
         UI:Destroy()
         game.CoreGui:FindFirstChild(project_name):Destroy()
     end
@@ -491,7 +494,7 @@ function Library:NewWindow()
 
                 local c
                 c = UIS.InputBegan:Connect(function(input)
-                    if game.CoreGui:FindFirstChild(project_name) == nil then
+                    if DESTROY_GUI then
                         c:Disconnect()
                     elseif input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == current_bind then
                         -- Click:Play()
@@ -711,7 +714,11 @@ function Library:NewWindow()
                     PickerFrame.Visible = not PickerFrame.Visible
                 end)
 
-                UIS.InputBegan:Connect(function(input)
+                local connection1
+                connection1 = UIS.InputBegan:Connect(function(input)
+                    if DESTROY_GUI then
+                        connection1:Disconnect()
+                    end
                     if input.UserInputType == Enum.UserInputType.MouseButton2 and PickerFrame.Visible == true and MouseNotIn(PickerFrame) then
                         PickerFrame.Visible = false
                     elseif input.UserInputType == Enum.UserInputType.MouseButton1 and PickerFrame.Visible == true and MouseNotIn(Detector) and MouseNotIn(PickerFrame) then
@@ -793,7 +800,11 @@ function Library:NewWindow()
                 HSVBox.MouseButton1Down:Connect(function()
                     SelectingHSV = true
                 end)
-                UIS.InputEnded:Connect(function(input)
+                local connection
+                connection = UIS.InputEnded:Connect(function(input)
+                    if DESTROY_GUI then
+                        connection:Disconnect()
+                    end
                     if input.UserInputType == Enum.UserInputType.MouseButton1 then
                         SelectingHUE = false
                         SelectingHSV = false
@@ -802,6 +813,9 @@ function Library:NewWindow()
                 
                 local c 
                 c = game:service("RunService").RenderStepped:Connect(function()
+                    if DESTROY_GUI then
+                        c:Disconnect()
+                    end
                     if SelectingHUE then
                         Indicator.Position = u2(0, 0, 0, clamp(Mouse.Y - HUEPicker.AbsolutePosition.Y, 0, HUEPicker.AbsoluteSize.Y))
                         local h1 = (HUEPicker.AbsoluteSize.Y - (Indicator.AbsolutePosition.Y - HUEPicker.AbsolutePosition.Y)) / HUEPicker.AbsoluteSize.Y
@@ -882,7 +896,7 @@ function Library:NewWindow()
                 Bob.BackgroundColor3 = _G["Theme"]["Slider_Bob"]
                 Bob.BorderSizePixel = 0
                 Bob.Position = u2(0, 0, 0.5, -1)
-                Bob.Size = u2(0, 4, 0, 2)
+                Bob.Size = u2(0, 4, 0, 6)
 
                 Section.Size = u2(1, 0, 0, SectionListLayout.AbsoluteContentSize.Y)
 
@@ -890,7 +904,11 @@ function Library:NewWindow()
                 Detector.MouseButton1Down:Connect(function()
                     Dragging = true
                 end)
-                UIS.InputEnded:Connect(function(input)
+                local connection
+                connection = UIS.InputEnded:Connect(function(input)
+                    if DESTROY_GUI then
+                        connection:Disconnect()
+                    end
                     if input.UserInputType == Enum.UserInputType.MouseButton1 then
                         Dragging = false
                     end
@@ -900,20 +918,23 @@ function Library:NewWindow()
                     local size = Bob.AbsoluteSize
                     local difference = info.max - info.min
                     local factor = abs(clamp(val, info.min, info.max) + abs(info.min)) / difference
-                    Bob.Position = u2(0, clamp(factor * (Bar.AbsoluteSize.X - size.X), 0, Bar.AbsoluteSize.X - size.X), 0.5, -1)
+                    Bob.Position = u2(0, clamp(factor * (Bar.AbsoluteSize.X - size.X), 0, Bar.AbsoluteSize.X - size.X), 0.5, -size.Y/2)
                 end
                 Place(info.value)
 
                 local previous = nil
                 local c 
                 c = game:service("RunService").RenderStepped:Connect(function()
+                    if DESTROY_GUI then
+                        c:Disconnect()
+                    end
                     if Dragging then
                         -- PLACE BOB
                         local size = Bob.AbsoluteSize
                         local pos = Bob.AbsolutePosition
                         local offset = pos.X - Bar.AbsolutePosition.X
                         local mouseoffset = Mouse.X - pos.X
-                        Bob.Position = u2(0, clamp(offset + mouseoffset, 0, Bar.AbsoluteSize.X - size.X), 0.5, -1)
+                        Bob.Position = u2(0, clamp(offset + mouseoffset, 0, Bar.AbsoluteSize.X - size.X), 0.5, -size.Y/2)
                         
                         -- CALCULATIONS
                         local difference = info.max - info.min
@@ -1000,6 +1021,9 @@ function Library:NewWindow()
                     local connection
                     local connection2
                     connection = UIS.InputBegan:Connect(function(input)
+                        if DESTROY_GUI then
+                            connection:Disconnect()
+                        end
                         if input.UserInputType == Enum.UserInputType.Keyboard then
                             -- Click:Play()
                             current_bind = input.KeyCode
@@ -1012,6 +1036,9 @@ function Library:NewWindow()
                         end
                     end)
                     connection2 = UIS.InputBegan:Connect(function(input)
+                        if DESTROY_GUI then
+                            connection2:Disconnect()
+                        end
                         if input.UserInputType == Enum.UserInputType.MouseButton2 then
                             Detector.Text = "NONE"
                             Scale("[NONE]")
@@ -1026,12 +1053,10 @@ function Library:NewWindow()
 
                 local c
                 c = UIS.InputBegan:Connect(function(input)
-                    if game.CoreGui:FindFirstChild(project_name) == nil then
+                    if DESTROY_GUI then
                         c:Disconnect()
-                    else
-                        if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == current_bind and Selecting == false then
-                            CallBack()
-                        end
+                    elseif input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == current_bind and Selecting == false then
+                        CallBack()
                     end
                 end)
 
