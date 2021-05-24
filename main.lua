@@ -490,6 +490,12 @@ function Library:NewWindow()
 
                 return toggle_function_library
             end
+            local function MouseNotIn(obj)
+                if (Mouse.X < obj.AbsolutePosition.X or Mouse.X > obj.AbsolutePosition.X + obj.AbsoluteSize.X) or (Mouse.Y < obj.AbsolutePosition.Y or Mouse.Y > obj.AbsolutePosition.Y + obj.AbsoluteSize.Y) then
+                    return true
+                end
+                return false
+            end
             function function_library:NewColorPicker(name, CallBack, info)
                 local ColorPicker = Instance.new("Frame")
                 local PickerName = Instance.new("TextLabel")
@@ -527,20 +533,21 @@ function Library:NewWindow()
 
                 Detector.Name = "Detector"
                 Detector.Parent = ColorPicker
-                Detector.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                Detector.BackgroundColor3 = info.default or Color3.fromRGB(255, 255, 255)
                 Detector.BorderColor3 = _G["Theme"]["Color_Picker"]
                 Detector.BackgroundTransparency = 0
                 Detector.BorderSizePixel = 1
                 Detector.Position = UDim2.new(1, -34, 0.5, -6)
+                Detector.ImageTransparency = 1
                 Detector.Size = UDim2.new(0, 25, 0, 12)
                 Detector.ZIndex = 2
 
                 Detector.MouseEnter:Connect(function()
-                    TS:Create(Detector, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ImageTransparency = 0.15}):Play()
+                    TS:Create(Detector, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 0.15}):Play()
                 end)
             
                 Detector.MouseLeave:Connect(function()
-                    TS:Create(Detector, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ImageTransparency = 0}):Play()
+                    TS:Create(Detector, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
                 end)
 
                 Section.Size = UDim2.new(1, 0, 0, SectionListLayout.AbsoluteContentSize.Y)
@@ -683,13 +690,6 @@ function Library:NewWindow()
                     PickerFrame.Visible = not PickerFrame.Visible
                 end)
 
-                local function MouseNotIn(obj)
-                    if (Mouse.X < obj.AbsolutePosition.X or Mouse.X > obj.AbsolutePosition.X + obj.AbsoluteSize.X) or (Mouse.Y < obj.AbsolutePosition.Y or Mouse.Y > obj.AbsolutePosition.Y + obj.AbsoluteSize.Y) then
-                        return true
-                    end
-                    return false
-                end
-
                 UIS.InputBegan:Connect(function(input)
                     if input.UserInputType == Enum.UserInputType.MouseButton2 and PickerFrame.Visible == true and MouseNotIn(PickerFrame) then
                         PickerFrame.Visible = false
@@ -717,7 +717,7 @@ function Library:NewWindow()
                     Value1.Text = math.round(newh)
                     Value2.Text = math.round(news)
                     Value3.Text = math.round(newv)
-                    Detector.ImageColor3 = Color3.fromRGB(math.round(newh), math.round(news), math.round(newv))
+                    Detector.BackgroundColor3 = Color3.fromRGB(math.round(newh), math.round(news), math.round(newv))
                     CallBack(Color3.fromRGB(newh, news, newv))
                 end
 
@@ -735,7 +735,7 @@ function Library:NewWindow()
                     if (SelectingHUE == false and SelectingHSV == false) and tostring(property) == "Text" and tonumber(Value1.Text) then
                         Value1.Text = math.clamp(tonumber(Value1.Text), 0, 255)
                         PlaceColor(Color3.fromRGB(tonumber(Value1.Text), tonumber(Value2.Text), tonumber(Value3.Text)))
-                        Detector.ImageColor3 = Color3.fromRGB(tonumber(Value1.Text), tonumber(Value2.Text), tonumber(Value3.Text))
+                        Detector.BackgroundColor3 = Color3.fromRGB(tonumber(Value1.Text), tonumber(Value2.Text), tonumber(Value3.Text))
                         prev1 = tonumber(Value1.Text)
                     elseif (SelectingHUE == false and SelectingHSV == false) and tostring(property) == "Text" and Value1.Text == " " then
                         Value1.Text = prev1
@@ -747,7 +747,7 @@ function Library:NewWindow()
                     if (SelectingHUE == false and SelectingHSV == false) and tostring(property) == "Text" and tonumber(Value2.Text) then
                         Value2.Text = math.clamp(tonumber(Value2.Text), 0, 255)
                         PlaceColor(Color3.fromRGB(tonumber(Value1.Text), tonumber(Value2.Text), tonumber(Value3.Text)))
-                        Detector.ImageColor3 = Color3.fromRGB(tonumber(Value1.Text), tonumber(Value2.Text), tonumber(Value3.Text))
+                        Detector.BackgroundColor3 = Color3.fromRGB(tonumber(Value1.Text), tonumber(Value2.Text), tonumber(Value3.Text))
                         prev2 = tonumber(Value2.Text)
                     elseif (SelectingHUE == false and SelectingHSV == false) and tostring(property) == "Text" and Value2.Text == " " then
                         Value2.Text = prev2
@@ -759,7 +759,7 @@ function Library:NewWindow()
                     if (SelectingHUE == false and SelectingHSV == false) and tostring(property) == "Text" and tonumber(Value3.Text) then
                         Value3.Text = math.clamp(tonumber(Value3.Text), 0, 255)
                         PlaceColor(Color3.fromRGB(tonumber(Value1.Text), tonumber(Value2.Text), tonumber(Value3.Text)))
-                        Detector.ImageColor3 = Color3.fromRGB(tonumber(Value1.Text), tonumber(Value2.Text), tonumber(Value3.Text))
+                        Detector.BackgroundColor3 = Color3.fromRGB(tonumber(Value1.Text), tonumber(Value2.Text), tonumber(Value3.Text))
                         prev3 = tonumber(Value3.Text)
                     elseif (SelectingHUE == false and SelectingHSV == false) and tostring(property) == "Text" and Value3.Text == " " then
                         Value3.Text = prev3
