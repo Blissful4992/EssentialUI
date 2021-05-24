@@ -535,20 +535,20 @@ function Library:NewWindow()
                 Detector.Parent = ColorPicker
                 Detector.BackgroundColor3 = info.default or Color3.fromRGB(255, 255, 255)
                 Detector.BorderColor3 = _G["Theme"]["Color_Picker"]
-                Detector.AutoButtonColor = false
                 Detector.BackgroundTransparency = 0
                 Detector.BorderSizePixel = 1
                 Detector.Position = UDim2.new(1, -34, 0.5, -6)
                 Detector.ImageTransparency = 1
                 Detector.Size = UDim2.new(0, 25, 0, 12)
                 Detector.ZIndex = 2
+                Detector.AutoButtonColor = false
 
                 Detector.MouseEnter:Connect(function()
-                    TS:Create(Detector, TweenInfo.new(0.1, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 0.05}):Play()
+                    TS:Create(Detector, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 0.05}):Play()
                 end)
             
                 Detector.MouseLeave:Connect(function()
-                    TS:Create(Detector, TweenInfo.new(0.1, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
+                    TS:Create(Detector, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
                 end)
 
                 Section.Size = UDim2.new(1, 0, 0, SectionListLayout.AbsoluteContentSize.Y)
@@ -847,7 +847,7 @@ function Library:NewWindow()
                 Detector.BackgroundTransparency = 1.000
                 Detector.Position = UDim2.new(0, 10, 0.666999996, 0)
                 Detector.Size = UDim2.new(1, -20, 0, 8)
-                Detector.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+                Detector.Image = ""
                 Detector.ImageTransparency = 1.000
 
                 Bar.Name = "Bar"
