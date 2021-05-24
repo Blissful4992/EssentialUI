@@ -535,6 +535,7 @@ function Library:NewWindow()
                 Detector.Parent = ColorPicker
                 Detector.BackgroundColor3 = info.default or Color3.fromRGB(255, 255, 255)
                 Detector.BorderColor3 = _G["Theme"]["Color_Picker"]
+                Detector.AutoButtonColor = false
                 Detector.BackgroundTransparency = 0
                 Detector.BorderSizePixel = 1
                 Detector.Position = UDim2.new(1, -34, 0.5, -6)
@@ -543,7 +544,7 @@ function Library:NewWindow()
                 Detector.ZIndex = 2
 
                 Detector.MouseEnter:Connect(function()
-                    TS:Create(Detector, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 0.15}):Play()
+                    TS:Create(Detector, TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 0.05}):Play()
                 end)
             
                 Detector.MouseLeave:Connect(function()
