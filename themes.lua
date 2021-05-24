@@ -112,7 +112,7 @@ local themes = {
         ["Dropdown_Options"] = Color3.fromRGB(222, 226, 230),
     }
 
-    ["Midnight"] = {
+    ["Night"] = {
         ["Window_Border"] = Color3.fromRGB(69, 4, 122),
         ["Close_Button"] = Color3.fromRGB(210, 210, 210),
 
