@@ -1164,7 +1164,7 @@ function Library:NewWindow()
                         local Option = new("TextButton")
                         Option.Name = "Option"
                         Option.Parent = OptionsList
-                        Option.BackgroundColor3 = RGB(28, 28, 28)
+                        Option.BackgroundColor3 = RGB(29, 29, 29)
                         Option.BorderColor3 = RGB(25, 25, 25)
                         Option.Size = u2(1, 0, 0, 20)
                         Option.AutoButtonColor = false
@@ -1175,11 +1175,11 @@ function Library:NewWindow()
                         Option.TextSize = 13.000
     
                         Option.MouseEnter:Connect(function()
-                            TS:Create(Option, tween(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 0.1}):Play()
+                            TS:Create(Option, tween(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundColor3 = RGB(26, 26, 26)}):Play()
                         end)
         
                         Option.MouseLeave:Connect(function()
-                            TS:Create(Option, tween(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
+                            TS:Create(Option, tween(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {BackgroundColor3 = RGB(29, 29, 29)}):Play()
                         end)
     
                         Option.MouseButton1Click:Connect(function()
@@ -1222,3 +1222,37 @@ function Library:NewWindow()
 end
 
 return Library
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
