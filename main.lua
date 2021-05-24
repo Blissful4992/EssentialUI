@@ -50,7 +50,7 @@ function Library:NewWindow()
     local MinimizeButton = new("ImageButton")
 
     local Click = new('Sound')
-    Click.Parent = game.StarterGui
+    Click.Parent = game.CoreGui
     Click.Name = "click"
     Click.SoundId = "rbxassetid://1238528678"
     Click.Volume = 2
@@ -104,7 +104,7 @@ function Library:NewWindow()
     ProjectTitle.BackgroundTransparency = 1.000
     ProjectTitle.Position = u2(0, 10, 0, 0)
     ProjectTitle.Size = u2(0.5, 0, 1, 0)
-    ProjectTitle.Font = Enum.Font.Code
+    ProjectTitle.Font = Enum.Font.Arial
     ProjectTitle.RichText = true
     ProjectTitle.ZIndex = 4
     ProjectTitle.Text = _G["UI_Info"]["Project_Title"]
@@ -446,7 +446,7 @@ function Library:NewWindow()
                 Detector.Parent = Toggle
                 Detector.BackgroundColor3 = RGB(29, 29, 29)
                 Detector.BorderColor3 = _G["Theme"]["Toggle"]
-                Detector.Position = u2(1, 28, 0.5, -9)
+                Detector.Position = u2(1, -28, 0.5, -9)
                 Detector.Size = u2(0, 18, 0, 18)
                 Detector.AutoButtonColor = false
                 Detector.Font = Enum.Font.Code
