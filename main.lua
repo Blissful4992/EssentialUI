@@ -198,6 +198,10 @@ function Library:NewWindow()
         end
     end
 
+    function structurer:Kill()
+        UI:Destroy()
+    end
+
     function structurer:NewPage(tbl, page_name)
         local CurrentPageNumber = #tbl + 1
         local page_info = {["name"] = page_name, ["idx"] = CurrentPageNumber}
