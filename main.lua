@@ -1222,37 +1222,3 @@ function Library:NewWindow()
 end
 
 return Library
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
