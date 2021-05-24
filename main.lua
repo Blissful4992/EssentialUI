@@ -446,8 +446,8 @@ function Library:NewWindow()
                 Detector.Parent = Toggle
                 Detector.BackgroundColor3 = RGB(29, 29, 29)
                 Detector.BorderColor3 = _G["Theme"]["Toggle"]
-                Detector.Position = u2(1, -30, 0.5, -10)
-                Detector.Size = u2(0, 20, 0, 20)
+                Detector.Position = u2(1, 28, 0.5, -9)
+                Detector.Size = u2(0, 18, 0, 18)
                 Detector.AutoButtonColor = false
                 Detector.Font = Enum.Font.Code
                 Detector.Text = ""
