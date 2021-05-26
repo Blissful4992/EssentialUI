@@ -1,4 +1,4 @@
---LUA FUNCTIONS
+-- LUA FUNCTIONS
 local clamp = math.clamp
 local round = math.round
 local abs = math.abs
@@ -43,7 +43,7 @@ function Library:NewWindow()
     local ColorModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/Blissful4992/Miscellaneous/main/ColorModule.lua"))()
 
     local UI = new("ScreenGui")
-    -- syn.protect_gui(UI)
+    syn.protect_gui(UI)
     
     local MainWindow = new("Frame")
     local TopBar = new("Frame")
@@ -278,7 +278,7 @@ function Library:NewWindow()
         Column1.Parent = Page_Category
         Column1.BackgroundColor3 = RGB(255, 255, 255)
         Column1.BackgroundTransparency = 1.000
-        Column1.Size = u2(0.330000013, 0, 1, 0)
+        Column1.Size = u2(0.33, 0, 1, 0)
 
         ColumnLayout1.Parent = Column1
         ColumnLayout1.SortOrder = Enum.SortOrder.LayoutOrder
@@ -287,8 +287,8 @@ function Library:NewWindow()
         Column2.Parent = Page_Category
         Column2.BackgroundColor3 = RGB(255, 255, 255)
         Column2.BackgroundTransparency = 1.000
-        Column2.Position = u2(0.330000013, 2, 0, 0)
-        Column2.Size = u2(0.330000013, 0, 1, 0)
+        Column2.Position = u2(0.33, 1, 0, 0)
+        Column2.Size = u2(0.33, 0, 1, 0)
 
         ColumnLayout2.Parent = Column2
         ColumnLayout2.SortOrder = Enum.SortOrder.LayoutOrder
@@ -297,8 +297,8 @@ function Library:NewWindow()
         Column3.Parent = Page_Category
         Column3.BackgroundColor3 = RGB(255, 255, 255)
         Column3.BackgroundTransparency = 1.000
-        Column3.Position = u2(0.666999996, 2, 0, 0)
-        Column3.Size = u2(0.330000013, 0, 1, 0)
+        Column3.Position = u2(0.666999996, 1, 0, 0)
+        Column3.Size = u2(0.33, 0, 1, 0)
 
         ColumnLayout3.Parent = Column3
         ColumnLayout3.SortOrder = Enum.SortOrder.LayoutOrder
@@ -1140,7 +1140,7 @@ function Library:NewWindow()
                 OptionsList.BackgroundColor3 = RGB(28, 28, 28)
                 OptionsList.BackgroundTransparency = 1.000
                 OptionsList.BorderColor3 = RGB(25, 25, 25)
-                OptionsList.Position = u2(0, 10, 0, 51)
+                OptionsList.Position = u2(0, 10, 0, 52)
                 OptionsList.Size = u2(1, -20, 0, 20)
                 OptionsList.ZIndex = dropdownzindex
                 OptionsList.Visible = false
