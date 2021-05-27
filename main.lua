@@ -43,7 +43,7 @@ function Library:NewWindow()
     local ColorModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/Blissful4992/Miscellaneous/main/ColorModule.lua"))()
 
     local UI = new("ScreenGui")
-    syn.protect_gui(UI)
+    -- syn.protect_gui(UI)
     
     local MainWindow = new("Frame")
     local TopBar = new("Frame")
