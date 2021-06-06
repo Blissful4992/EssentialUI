@@ -1,8 +1,3 @@
-_G["pages"] = {}
-_G["UI_Info"] = {
-    ["Project_Title"] = "<b>sex</b>hub"
-}
-
 _G["Theme"] = {
     ["Window_Border"] = Color3.fromRGB(166, 94, 0),
     ["Close_Button"] = Color3.fromRGB(175, 100, 20),
